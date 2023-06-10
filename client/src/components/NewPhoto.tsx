@@ -3,7 +3,7 @@ import { useHistory } from 'react-router-dom'
 import { addPhoto, uploadFile } from '../api/photos-api'
 import { Button } from 'semantic-ui-react'
 
-const AddPhoto = ({ auth }) => {
+const NewPhoto = ({ auth }) => {
   const [files, setFiles] = React.useState<any>()
   const history = useHistory()
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -26,7 +26,7 @@ const AddPhoto = ({ auth }) => {
   return (
     <div>
       <Button disabled={!files} onClick={handleUploadFile} color="green">
-      Upload
+        Upload
       </Button>
       {isUploading ? <p>Uploading...</p> : null}
       <input
@@ -39,4 +39,4 @@ const AddPhoto = ({ auth }) => {
   )
 }
 
-export default AddPhoto
+export default NewPhoto

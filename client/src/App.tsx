@@ -3,7 +3,7 @@ import { Link, Route, Router, Switch } from 'react-router-dom'
 import { Grid, Menu, Segment } from 'semantic-ui-react'
 
 import Auth from './auth/Auth'
-import AddPhoto from './components/AddPhoto'
+import NewPhoto from './components/NewPhoto'
 import EditPhoto from './components/EditPhoto'
 import { LogIn } from './components/LogIn'
 import { NotFound } from './components/NotFound'
@@ -93,7 +93,7 @@ export default class App extends Component<AppProps, AppState> {
           <Photos auth={this.props.auth} />
         </Route>
         <Route path="/photos/add" exact>
-          <AddPhoto auth={this.props.auth} />
+          <NewPhoto auth={this.props.auth} />
         </Route>
         <Route path="/photos/edit/:photoKey" exact>
           <EditPhoto idToken={this.props.auth.idToken} />
