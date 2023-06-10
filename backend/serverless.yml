@@ -1,6 +1,6 @@
-org: nghiepnx
 app: capstone-project
 service: serverless-my-library-app
+frameworkVersion: v3
 
 plugins:
   - serverless-webpack

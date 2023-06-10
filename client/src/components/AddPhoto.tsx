@@ -1,6 +1,7 @@
 import React from 'react'
 import { useHistory } from 'react-router-dom'
 import { addPhoto, uploadFile } from '../api/photos-api'
+import { Button } from 'semantic-ui-react'
 
 const AddPhoto = ({ auth }) => {
   const [files, setFiles] = React.useState<any>()
@@ -17,8 +18,6 @@ const AddPhoto = ({ auth }) => {
     setIsUploading(true)
 
     const uploadUrl = await addPhoto(auth.idToken)
-    console.log(uploadUrl)
-    console.log(files[0])
     await uploadFile(uploadUrl, files[0])
     setIsUploading(false)
     history.push('/')
@@ -26,9 +25,9 @@ const AddPhoto = ({ auth }) => {
 
   return (
     <div>
-      <button disabled={!files} onClick={handleUploadFile}>
-        Upload
-      </button>
+      <Button disabled={!files} onClick={handleUploadFile} color="green">
+      Upload
+      </Button>
       {isUploading ? <p>Uploading...</p> : null}
       <input
         type="file"

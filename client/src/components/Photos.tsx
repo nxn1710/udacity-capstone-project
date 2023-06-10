@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import { useHistory } from 'react-router-dom'
 import { deletePhoto, getPhotos } from '../api/photos-api'
 import { Photo } from '../types/Photo'
+import { Button, Label } from 'semantic-ui-react'
 
 const Photos = ({ auth }) => {
   const history = useHistory()
@@ -23,7 +24,11 @@ const Photos = ({ auth }) => {
   return (
     <div>
       <h1> Photos:</h1>
-      <h3>Click on a photo to start editing its name</h3>
+      <h3>Please Click on a photo to start edit its name</h3>
+      <Button onClick={() => history.push('/photos/add')} color="yellow">
+        Add a photo
+      </Button>
+
       {!!loading && <p>Loading...</p>}
       <div>
         {photos.map((photo) => {
@@ -45,21 +50,25 @@ const Photos = ({ auth }) => {
                   src={photo.photoUrl}
                   alt={photo.photoName}
                 />
-                <button
-                  onClick={() => {
+              </div>{' '}
+              <div>
+                <Label
+                  style={{ marginRight: 10, paddingTop: 13, paddingBottom: 10 }}
+                >
+                  Photo name: {photo.photoName ?? 'NO_NAME'}
+                </Label>
+                <Button
+                  oonClick={() => {
                     handleDeletePhoto(photo.photoKey)
                   }}
+                  color="red"
                 >
                   Delete
-                </button>
-              </div>{' '}
-              <p> {photo.photoName}</p>
+                </Button>
+              </div>
             </>
           )
         })}
-      </div>
-      <div>
-        <button onClick={() => history.push('/photos/add')}>Add a photo</button>
       </div>
     </div>
   )

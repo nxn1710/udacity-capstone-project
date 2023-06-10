@@ -1,6 +1,7 @@
 import React from 'react'
 import { useHistory, useParams } from 'react-router-dom'
 import { editPhoto } from '../api/photos-api'
+import { Button, Input } from 'semantic-ui-react'
 
 const EditPhoto = ({ idToken }: { idToken: string }) => {
   const params = useParams<{ photoKey: string }>()
@@ -26,16 +27,18 @@ const EditPhoto = ({ idToken }: { idToken: string }) => {
   return (
     <div>
       <p>Add or edit photo name</p>{' '}
-      <input
+      <Input
         value={photoName}
         type="text"
+        class="ui focus input"
+        placeholder="Image Name..."
         onChange={(e) => {
           setPhotoName(e.target.value)
         }}
-      />
-      <button disabled={loading} onClick={handleEditPhoto}>
+      ></Input>
+      <Button disabled={loading} onClick={handleEditPhoto} color="blue">
         Confirm
-      </button>
+      </Button>
     </div>
   )
 }
